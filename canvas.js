@@ -11,20 +11,7 @@ let grid_size = 50;
 ctx.fillStyle = "#4d4d4d";
 ctx.fillRect(0, 0, w, h);
 
-const line = (start_x, start_y, end_x, end_y) => {
-    ctx.beginPath();
-    ctx.moveTo(start_x, start_y);
-    ctx.lineTo(end_x, end_y);
-    ctx.stroke();
-};
 
-const point = (x, y, r) => {
-    // ctx.fillRect(x, y, 10, 10);
-    ctx.beginPath();
-    ctx.arc(w / 2 + x * grid_size, h / 2 + y * grid_size, r, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.fill();
-};
 
 const drawGrid = (size) => {
     ctx.strokeStyle = 'rgb(150, 150, 150)';

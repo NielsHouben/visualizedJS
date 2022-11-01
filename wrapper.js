@@ -6,14 +6,17 @@ let height = window.innerHeight;
 
 canvas.width = width;
 canvas.height = height;
-console.log("Initial:", width, height);
+
 drawState();
+
 
 function resize () {
     width = window.innerWidth;
     height = window.innerHeight;
+
     canvas.width = width;
     canvas.height = height;
+
     drawState();
 }
 

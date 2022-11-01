@@ -1,59 +1,39 @@
-const pi = Math.PI;
-
-function line (start_x, start_y, end_x, end_y) {
-    ctx.beginPath();
-    ctx.moveTo(start_x, start_y);
-    ctx.lineTo(end_x, end_y);
-    ctx.stroke();
-};
-
-const x_to_pixel_x = x => (width / 2) + x;
-const y_to_pixel_y = y => (height / 2) - y;
-
-function cline (start_x, start_y, end_x, end_y) {
-    line(x_to_pixel_x(start_x), y_to_pixel_y(start_y), x_to_pixel_x(end_x), y_to_pixel_y(end_y));
-};
-
-function point (x, y, r) {
-    // ctx.fillRect(x, y, 10, 10);
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, pi * 2, true);
-    ctx.closePath();
-    ctx.fill();
-};
-
-function cpoint (x, y, r) { point(x_to_pixel_x(x), y_to_pixel_y(y), r); }
-
-function writeText (content, x, y) {
-    ctx.font = "15px Verdana";
-    ctx.fillText(content, x, y);
-}
-
-function cwriteText (content, x, y) { writeText(content, x_to_pixel_x(x), y_to_pixel_y(y), r); }
-
 
 function drawState () {
-    ctx.fillStyle = "#222222";
+    ctx.fillStyle = "#202124";
     ctx.fillRect(0, 0, width, height);
 
-    ctx.strokeStyle = 'rgb(200, 0, 0)';
-    ctx.lineWidth = 10;
+    ctx.strokeStyle = 'rgb(0, 200, 0)';
+    ctx.lineWidth = 5;
     ctx.fillStyle = "rgb(255, 255, 255)";
 
     x = r * Math.cos(v);
     y = r * Math.sin(v);
 
-
     // x = 100;
     // y = 100;
 
-    cline(0, 0, x, y);
+    line(0, 0, x, y);
+    ctx.strokeStyle = 'rgb(200, 0, 0)';
+    line(0, 0, x, 0);
+    ctx.strokeStyle = 'rgb(0, 0, 200)';
+    line(0, 0, 0, y);
     // point(x, y, 10);
-    cpoint(x, y, 10);
-    cpoint(0, 0, 10);
+    point(x, y, 8);
+    point(0, 0, 8);
 
+    ctx.fillStyle = "rgb(255, 255, 0)";
 
-    cwriteText(`${(v / pi % 2).toFixed(1)} * π`, 150, 0);
+    writeText(`v = ${(v / Math.PI % 2).toFixed(1)} * π`, 300, 0);
+
+    ctx.fillStyle = "rgb(0, 255, 0)";
+    writeText(`r = ${r}`, 300, -15);
+
+    ctx.fillStyle = "rgb(255, 0, 0)";
+    writeText(`x = ${x.toFixed(0)}`, 300, -15 * 3);
+    ctx.fillStyle = "rgb(0, 0, 255)";
+    writeText(`y = ${y.toFixed(0)}`, 300, -15 * 4);
+
 
 }
 
@@ -63,12 +43,12 @@ function drawState () {
 
 
 r = 100;
-v = pi;
+v = Math.PI;
 
 
 setInterval(() => {
-    v += pi / 360;
-    r = 200 * Math.abs(Math.cos(v + pi / 2));
+    v += Math.PI / 720;
+    // r = 200 * Math.abs(Math.cos(v + Math.PI / 2));
 
     drawState();
 }, 1);
