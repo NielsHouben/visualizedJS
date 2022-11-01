@@ -40,6 +40,26 @@ function point (x, y, r, origin = "center") {
     ctx.fill();
 };
 
+/**
+ * Draws an arc
+ * @param  {number} x x cordinate of arc center
+ * @param  {number} y y cordinate of arc center
+ * @param  {number} r radius of arc
+ * @param  {number} start start angle
+ * @param  {number} end end angle
+ * @param  {string} [origin] cordinate plane center
+ */
+function arc (x, y, r, start, end, origin = "center") {
+    if (origin = "center") {
+        x = (width / 2) + x;
+        y = (height / 2) - y;
+    }
+    // ctx.fillRect(x, y, 10, 10);
+    ctx.beginPath();
+    ctx.arc(x, y, r, start, end);
+    ctx.stroke();
+};
+
 
 /**
  * Writes text

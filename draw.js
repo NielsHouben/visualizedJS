@@ -3,7 +3,6 @@ function drawState () {
     ctx.fillStyle = "#202124";
     ctx.fillRect(0, 0, width, height);
 
-    ctx.strokeStyle = 'rgb(0, 200, 0)';
     ctx.lineWidth = 5;
     ctx.fillStyle = "rgb(255, 255, 255)";
 
@@ -13,11 +12,21 @@ function drawState () {
     // x = 100;
     // y = 100;
 
-    line(0, 0, x, y);
     ctx.strokeStyle = 'rgb(200, 0, 0)';
     line(0, 0, x, 0);
     ctx.strokeStyle = 'rgb(0, 0, 200)';
     line(0, 0, 0, y);
+    ctx.strokeStyle = "rgb(255, 255, 0)";
+
+    ctx.lineWidth = 3;
+    arc(0, 0, 30, 2 * Math.PI - v % (Math.PI * 2), 0);
+
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'rgb(0, 200, 0)';
+    line(0, 0, x, y);
+
+
+
     // point(x, y, 10);
     point(x, y, 8);
     point(0, 0, 8);
@@ -35,6 +44,8 @@ function drawState () {
     writeText(`y = ${y.toFixed(0)}`, 300, -15 * 4);
 
 
+
+
 }
 
 
@@ -43,7 +54,7 @@ function drawState () {
 
 
 r = 100;
-v = Math.PI;
+v = 0;
 
 
 setInterval(() => {
