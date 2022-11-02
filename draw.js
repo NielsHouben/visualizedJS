@@ -1,5 +1,13 @@
+function grid () {
+    // line(height/2)
+
+
+}
 
 function drawState () {
+    grid();
+
+
     ctx.fillStyle = "#202124";
     ctx.fillRect(0, 0, width, height);
 
@@ -24,6 +32,10 @@ function drawState () {
     ctx.lineWidth = 5;
     ctx.strokeStyle = 'rgb(0, 200, 0)';
     line(0, 0, x, y);
+
+    ctx.strokeStyle = 'rgb(255, 0, 255)';
+    ctx.lineWidth = 3;
+    arc(0, 0, 100, 0, Math.PI * 2);
 
 
 
